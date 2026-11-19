@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Trophy Atlas — GTA VI Trophy Guide &amp; Tracker</title>
+<meta name="description" content="An offline guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI: checklist, roadmap to the platinum, missables, and a cited guide to each trophy.">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23f5b942'/%3E%3Ctext x='16' y='22' font-size='18' font-family='Georgia,serif' font-weight='bold' text-anchor='middle' fill='%2314101c'%3EL%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-title">
+      <h1>Leonida Trophy Atlas</h1>
+      <p class="tagline">Every GTA VI trophy, mapped — a guide and tracker that works offline.</p>
+      <p class="official">55 trophies &middot; 1 platinum &middot; 2 gold &middot; 6 silver &middot; 46 bronze &middot; 28 hidden on PlayStation</p>
+    </div>
+    <div class="progress-card" id="progressCard">
+      <div class="progress-big"><span id="earnedCount">0</span><span class="progress-of">/ 55 earned</span></div>
+      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width: 0%"></div></div>
+      <p class="progress-text" id="progressText">Your platinum run starts here.</p>
+      <ul class="grade-counts" id="gradeCounts"></ul>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" id="tabs" aria-label="Guide sections">
+  <button class="tab active" data-view="checklist" type="button">Checklist</button>
+  <button class="tab" data-view="roadmap" type="button">Roadmap</button>
+  <button class="tab" data-view="missables" type="button">Missables <span class="tab-badge" id="missableBadge">9</span></button>
+  <button class="tab" data-view="sources" type="button">Sources</button>
+</nav>
+
+<section class="toolbar" aria-label="Tracker controls">
+  <label class="search-box"><span class="visually-hidden">Search trophies</span>
+    <input id="search" type="search" placeholder="Search a trophy by name or description…" autocomplete="off">
+  </label>
+  <div class="kind-filters" id="kindFilters" role="group" aria-label="Filter by kind">
+    <button class="chip active" data-kind="all" type="button">All</button>
+    <button class="chip" data-kind="story" type="button">Story</button>
+    <button class="chip" data-kind="missable" type="button">Missable</button>
+    <button class="chip" data-kind="collectibles" type="button">Collectibles</button>
+    <button class="chip" data-kind="activities" type="button">Activities</button>
+  </div>
+  <label class="grade-filter">Grade
+    <select id="gradeFilter">
+      <option value="all">All grades</option>
+      <option value="platinum">Platinum</option>
+      <option value="gold">Gold</option>
+      <option value="silver">Silver</option>
+      <option value="bronze">Bronze</option>
+    </select>
+  </label>
+  <label class="toggle"><input id="spoilerToggle" type="checkbox" checked> <span>Hide story spoilers</span></label>
+  <label class="toggle"><input id="earnedOnly" type="checkbox"> <span>Earned only</span></label>
+  <div class="save-actions">
+    <button id="exportBtn" type="button">Export progress</button>
+    <button id="importBtn" type="button">Import progress</button>
+    <input id="importFile" type="file" accept="application/json,.json" hidden>
+    <button id="resetBtn" type="button" class="danger">Reset</button>
+  </div>
+</section>
+
+<main class="layout">
+  <div class="views">
+    <section class="view active" id="view-checklist" aria-label="Trophy checklist">
+      <p class="view-intro" id="listSummary">55 trophies. Tick one off when it pops — progress saves in this browser.</p>
+      <ol class="trophy-list" id="trophyList"></ol>
+    </section>
+    <section class="view" id="view-roadmap" aria-label="Roadmap to the platinum">
+      <h2>The road to the platinum</h2>
+      <p class="view-intro">Five stages, in order. Finish each stage before the next, and do the missables before the final mission.</p>
+      <div id="roadmapStages"></div>
+    </section>
+    <section class="view" id="view-missables" aria-label="Missable trophies">
+      <h2>Missables — do these before the finale</h2>
+      <p class="view-intro">Nine trophies can close as the story moves on. Each one says why, and when to do it.</p>
+      <div id="missableList"></div>
+    </section>
+    <section class="view" id="view-sources" aria-label="Sources and method">
+      <h2>Sources &amp; method</h2>
+      <div class="sources-body">
+        <p>The trophy list is the official PlayStation 5 list: 55 trophies, 1 platinum, 2 gold, 6 silver and 46 bronze, 28 of them hidden on PlayStation until earned — as Exophase and PSNProfiles listed it before this guide was written, the two agreeing on every name, description and grade.</p>
+        <p>Every guide in this atlas is written for this entry from the official description. A guide says what to do, where and how in general terms, and when it can be missed. Where a place or step is not pinned down by the description, the guide says so instead of inventing one — a cited guide beats an uncited one, however detailed.</p>
+        <p><strong>Sources per trophy:</strong> Exophase (official name, description, grade) and PSNProfiles (PSN progress counts where a trophy tracks one). Each trophy's guide pane names its sources beside the guide.</p>
+        <p><strong>Honesty note:</strong> Grand Theft Auto VI is a day old and no complete guide exists yet. Nothing here is copied from another guide. Where this atlas is unsure, it says "not yet checked in the game" — check back as players confirm the details.</p>
+        <p><strong>Offline:</strong> this guide is plain files. It loads nothing from the network and saves your progress only in this browser (localStorage). Export it to a file to keep a copy.</p>
+      </div>
+    </section>
+  </div>
+  <aside class="detail" id="detailPane" aria-label="Trophy guide">
+    <p class="detail-empty">Pick a trophy on the left to read its guide, its sources and when it can be missed.</p>
+  </aside>
+</main>
+
+<footer class="foot">
+  <p>Leonida Trophy Atlas — an offline guide and tracker for the 55 GTA VI trophies on PlayStation 5. Not affiliated with Rockstar Games or PlayStation. Trophy names and descriptions are shown as PlayStation publishes them; every guide is this atlas's own words.</p>
+</footer>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
